@@ -1,0 +1,129 @@
+POST http://localhost:8080/newFinalEvent
+Content-Type: application/json
+
+{
+  "event": {
+    "latitude": 50.0049,
+    "longitude": 14.002504
+  },
+  "sensors": [
+    {
+      "lat": 50,
+      "lon": 14.002504
+    },
+    {
+      "lat": 50.01,
+      "lon": 14.0025
+    },
+    {
+      "lat": 50,
+      "lon": 14
+    }
+  ]
+}
+
+<> 2021-02-07T171431.201.json
+<> 2021-02-07T170813.201.json
+
+###
+POST http://localhost:8080/newFinalEvent
+Content-Type: application/json
+
+{
+  "event": {
+    "latitude": 50.10338,
+    "longitude": 14.38991,
+    "timestamp": "2021-02-01 15:00:35"
+  },
+  "sensors": [
+    {
+      "lat": 50.103082,
+      "lon": 14.391701
+    },
+    {
+      "lat": 50.104194,
+      "lon": 14.394366
+    },
+    {
+      "lat": 50.104012,
+      "lon": 14.388319
+    }
+  ]
+}
+
+<> 2021-02-12T140404.201.json
+<> 2021-02-07T171404.201.json
+
+###
+GET http://localhost:8080/testEvent
+
+<> 2021-02-02T201827.500.json
+
+###
+POST http://localhost:8080/testEvent
+
+<> 2021-02-02T203723.200.json
+
+###
+DELETE http://localhost:8080/testEvent
+
+<> 2020-12-27T133625.200.json
+
+###
+GET http://localhost:8080/testEventAll
+
+<> 2020-12-27T133621.200.json
+
+
+###
+POST http://localhost:8080/testHistory
+
+<> 2020-12-27T133644.200.json
+
+###
+GET http://localhost:8080/testHistory
+
+<> 2020-12-27T133651.200.json
+
+
+###
+DELETE http://localhost:8080/testHistory
+
+<> 2020-12-27T133703.200.json
+
+
+###
+GET http://localhost:8080/testHistoryAll
+
+<> 2020-12-27T133654.200.json
+
+
+
+###
+POST http://localhost:8080/testHistory
+
+<> 2021-02-02T201217.200.json
+
+###
+POST http://localhost:8080/newEvent
+Content-Type: application/json
+
+{
+  "report": [
+    {
+      "id": 1,
+      "time": 6698
+    },
+    {
+      "id": 2,
+      "time": 6698
+    },
+    {
+      "id": 3,
+      "time": 6689
+    }
+  ]
+}
+
+<> 2021-02-20T164523.200.json
+<> 2021-02-20T164357.200.json
