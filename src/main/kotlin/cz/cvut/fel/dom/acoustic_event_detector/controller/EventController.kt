@@ -33,8 +33,6 @@ class EventController(val eventsRepository: EventsRepository) {
         val idsOfSensors = possibleEvent.report.map { it.id }
         val sensors = SensorsRepository().getSensorsByIds(idsOfSensors)
 
-        println(sensors)
-
         if (sensors.size > 2) {
             val calculator = Calculator(possibleEvent, sensors)
             val center = calculator.getCenter()
@@ -52,39 +50,7 @@ class EventController(val eventsRepository: EventsRepository) {
         return mapOf(Pair("Message", "Not enough sensors"))
     }
 
-    @PostMapping("/testEvent")
-    fun postTestEvent(): Map<String, String> {
-        eventsRepository.add(
-            EventWrapper(
-                Event(50.01, 14.002, "test-id"),
-
-                sensors = listOf(
-                    EventSensor(50.005, 14.0025),
-                    EventSensor(51.01, 14.003)
-                )
-            )
-        )
-        return mapOf(Pair("Message", "Ok"))
-    }
-
-    @GetMapping("/testEvent")
-    fun getTestEvent(): EventWrapper {
-        return eventsRepository.getById("test-id")
-    }
-
-    @DeleteMapping("/testEvent")
-    fun deleteTestEvent(): Map<String, String> {
-        eventsRepository.delete("test-id")
-        return mapOf(Pair("Message", "Deleted"))
-    }
-
-    @GetMapping("/testEventAll")
-    fun getAllEvents(): List<EventWrapper> {
-        return eventsRepository.getAll()
-    }
-
     private fun sendNotification(): Boolean {
-
         val notification: Notification =
             Notification.builder().setTitle("New event").setBody("Hey, a new event was reported!").build()
 

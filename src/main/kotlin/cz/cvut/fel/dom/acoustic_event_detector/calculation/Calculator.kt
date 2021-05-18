@@ -34,11 +34,12 @@ class Calculator(possibleEvent: PossibleEvent, sensors: List<Sensor>) {
     }
 
     fun getCenter(): DoubleArray {
-        val solver = NonLinearLeastSquaresSolver(
-            MultilaterationFunction(positions, distances, referencePoint),
-            LevenbergMarquardtOptimizer()
-        )
+        val func = MultilaterationFunction(positions, distances, referencePoint)
+        val optimizer = LevenbergMarquardtOptimizer()
+        val solver = NonLinearLeastSquaresSolver(func, optimizer)
+
         val optimum = solver.solve()
+
         val centroid = optimum.point.toArray()
         val standardDeviation = optimum.getSigma(0.0).toArray()
         if (centroid[0] > 90.0 &&

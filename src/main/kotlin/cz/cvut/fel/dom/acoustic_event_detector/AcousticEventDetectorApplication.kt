@@ -12,7 +12,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.UserRecord
 import cz.cvut.fel.dom.acoustic_event_detector.data.repository.EventsRepository
-import cz.cvut.fel.dom.acoustic_event_detector.data.repository.HistoryRepository
 import cz.cvut.fel.dom.acoustic_event_detector.data.repository.UsersRepository
 import org.springframework.context.annotation.Bean
 import java.io.File
@@ -24,11 +23,6 @@ class AcousticEventDetectorApplication {
     @Bean
     fun eventRepository(): EventsRepository {
         return EventsRepository()
-    }
-
-    @Bean
-    fun historyRepository(): HistoryRepository {
-        return HistoryRepository()
     }
 
 }
@@ -57,7 +51,6 @@ private fun initializeFirebaseAdmin(configPath: String) {
         val serviceAccount = FileInputStream(File(configPath))
         val options = FirebaseOptions.builder()
             .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-            .setDatabaseUrl("https://acoustic-event-detector.firebaseio.com")
             .build()
         FirebaseApp.initializeApp(options)
 

@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "cz.cvut.fel.dom.acoustic_event_detector"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {

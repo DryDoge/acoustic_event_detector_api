@@ -17,7 +17,7 @@ class MultilaterationFunction(
 ) :
     TrilaterationFunction(positions, distances) {
     // * Calculate value of partial derivations of function
-    // * f'(x_i) = [df/dx ; df/dy]
+    // * f'(x_i) = [df/dx_i ; df/dy_i]
     // *         ----------                                                                 ----------
     // *         |                                                                                   |
     // *   df    |             (x - P_r_x)                               (x - P_i_x)                 |
@@ -52,8 +52,9 @@ class MultilaterationFunction(
         return Array2DRowRealMatrix(jacobian)
     }
 
-    // * Calculate value of function
-    // * f(x_i) = [(x - P_r_x)^2 + (y - P_r_y)^2]^1/2 + [(x - P_i_x)^2 + (y - P_i_y)^2]^1/2 + (t_i - t_r)*speed_of_sound
+    // Calculate value of function
+    // f(x_i) = [(x - P_r_x)^2 + (y - P_r_y)^2]^1/2 + [(x - P_i_x)^2 + (y - P_i_y)^2]^1/2 + distances_i
+    // distances_i = (t_i - t_r) * speed_of_sound
     override fun value(point: RealVector): Pair<RealVector, RealMatrix> {
         val referenceArray = point.toArray()
         val resultPoint = DoubleArray(distances.size)
